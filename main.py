@@ -55,4 +55,8 @@ while i < 24:
     credit_value = (1 + ((inflation[i] + apr)/1200)) * credit_value - inst
     dif = prev_credit_value - credit_value
     print(month[m] + ": " + "Twoja pozostała kwota kredytu to {} zł, to {} zł mniej niż w poprzednim miesiącu.".format(credit_value, dif))
+    if m == 11:
+        m = 0
+    else:
+        m += 1
     i += 1
