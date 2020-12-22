@@ -47,8 +47,8 @@ apr = float(input())
 print("Ile wynosi miesięczna rata?")
 inst = float(input())
 
-i = 0
-m = 0
+i = 0 # licznik listy inflacji
+m = 0 # licznik listy miesięcy
 
 while i < 24:
     prev_credit_value = credit_value
