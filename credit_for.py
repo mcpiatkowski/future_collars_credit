@@ -1,4 +1,4 @@
-month = (
+MONTH = (
     "Styczeń",
     "Luty",
     "Marzec",
@@ -13,7 +13,7 @@ month = (
     "Grudzień"
 )
 
-inflation = (
+INFLATION = (
     1.592824484,
     -0.453509101,
     2.324671717,
@@ -47,18 +47,8 @@ apr = float(input())
 print("Ile wynosi miesięczna rata?")
 inst = float(input())
 
-i = 0
-m = 0
-
-while i < 24:
     prev_credit_value = credit_value
     credit_value = (1 + ((inflation[i] + apr)/1200)) * credit_value - inst
-    credit_value_round = int(credit_value*100+0.5)/100
-    difference = prev_credit_value - credit_value
-    difference_round = int(difference*100+0.5)/100
-    print(month[m] + ": " + "Twoja pozostała kwota kredytu to {} zł, to {} zł mniej niż w poprzednim miesiącu.".format(credit_value_round, difference_round))
-    if m == 11:
-        m = 0
-    else:
-        m += 1
-    i += 1
+    dif = prev_credit_value - credit_value
+    print(month[m] + ": " + "Twoja pozostała kwota kredytu to {} zł, to {} zł mniej niż w poprzednim miesiącu.".format(credit_value, dif))
+
