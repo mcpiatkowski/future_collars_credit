@@ -45,10 +45,18 @@ credit_value = float(input())
 print("Jakie oprocentowanie będzie miał kredyt?")
 apr = float(input())
 print("Ile wynosi miesięczna rata?")
-inst = float(input())
+installment = float(input())
+
+for i in range(24):
 
     prev_credit_value = credit_value
-    credit_value = (1 + ((inflation[i] + apr)/1200)) * credit_value - inst
-    dif = prev_credit_value - credit_value
-    print(month[m] + ": " + "Twoja pozostała kwota kredytu to {} zł, to {} zł mniej niż w poprzednim miesiącu.".format(credit_value, dif))
-
+    credit_value = (1 + ((INFLATION[i] + apr)/1200)) * credit_value - installment
+    credit_value_round = int(credit_value*100+0.5)/100
+    difference = prev_credit_value - credit_value
+    difference_round = int(difference*100+0.5)/100
+    if i>11:
+        month = MONTH[i-12]
+    else:
+        month = MONTH[i]
+    message = f'{month}: Twoja pozostała kwota kredytu to {credit_value_round} zł, to {difference_round} zł mniej niż w poprzednim miesiącu.'
+    print(message)
